@@ -8,10 +8,6 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
 public class LoginController {
 
     @FXML
@@ -26,31 +22,8 @@ public class LoginController {
     @FXML
     private void onIngresarClick() {
 
-
-        Connection conexion;
         String usuario = txtUsuario.getText();
         String password = txtContrasenia.getText();
-
-        try (Connection conn = Conexion.conectar()) {
-
-            String sql = "SELECT * FROM usuarios WHERE usuario = ? AND password = ?";
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, usuario);
-            ps.setString(2, password);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                System.out.println("Login correcto");
-            } else {
-                System.out.println("Usuario o contraseña incorrectos");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
         if (usuario.equals("admin") && password.equals("1234")) {
 
@@ -75,3 +48,5 @@ public class LoginController {
     private void onLimpiarClick() {
         txtUsuario.clear();
         txtContrasenia.clear();
+    }
+}
