@@ -1,0 +1,6 @@
+Username
+camilo_db_01
+password:
+1234
+
+URI_MONGO: mongodb+srv://camilo_db_01:1234@cluster0.gaf7ngq.mongodb.net/?appName=Cluster0
